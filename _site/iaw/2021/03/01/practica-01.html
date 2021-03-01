@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Práctica 1 | IAW - JOSE ANTONIO ABAD JURADO</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Práctica 1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="PRÁCTICA 1 IAW" />
+<meta property="og:description" content="PRÁCTICA 1 IAW" />
+<link rel="canonical" href="http://0.0.0.0:4000/iaw/2021/03/01/practica-01.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/iaw/2021/03/01/practica-01.html" />
+<meta property="og:site_name" content="IAW - JOSE ANTONIO ABAD JURADO" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-01T04:54:26-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Práctica 1" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","description":"PRÁCTICA 1 IAW","headline":"Práctica 1","dateModified":"2021-03-01T04:54:26-06:00","datePublished":"2021-03-01T04:54:26-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/iaw/2021/03/01/practica-01.html"},"url":"http://0.0.0.0:4000/iaw/2021/03/01/practica-01.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="IAW - JOSE ANTONIO ABAD JURADO" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">IAW - JOSE ANTONIO ABAD JURADO</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Práctica 1</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-03-01T04:54:26-06:00" itemprop="datePublished">Mar 1, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="práctica-1-iaw">PRÁCTICA 1 IAW</h1>
+
+<h1 id="instalación-de-la-pila-lamp-en-una-máquina-ubuntu-server">Instalación de la pila LAMP en una máquina Ubuntu Server</h1>
+
+<h2 id="configuración-previa">Configuración previa</h2>
+<p>Lo primero que debemos hacer es crear una máquina virtual Ubuntu 20.04 en VirtualBox, en mi caso dejé el tamaño de disco duro y de memoria RAM de forma predeterminada, la red en modo adaptador puente y cargamos la iso.</p>
+
+<p>Configuramos las primeras cosas que van saliendo, idioma, zona horaria, etc… Y una vez instalado el SO al completo lo que hacemos es reiniciar y quitar el disco. Después de esto iniciamos sesión y establecemos una dirección IP estática.</p>
+
+<p>Instalé SSH para poder conectarme desde mi portátil y tener más facilidad a la hora de copiar y pegar comandos.</p>
+
+<h2 id="instalación-apache-http-server">Instalación Apache HTTP Server</h2>
+<p>Comprobamos que tenemos la lista de repositorios y paquetes actualizado mediante el comando: “sudo apt update”</p>
+
+<p>En caso de que hubiera nuevos paquetes para instalar, usamos el siguiente comando: “sudo apt upgrade”</p>
+
+<p>Una vez hayamos actualizado los paquetes instalamos el servidor Apache: “sudo apt install apache2 -y”</p>
+
+<p>Añadimos “-y” a final de los comandos con el fin de que se omita cualquier interacción con el ususario y la instalación sea directa.</p>
+
+<p>Para comprobar que se ha instalado correctamente lo que hacemos es poner en el navegador nuestra dirección IP de la máquina servidor y vemos que se nos muestra la página principal de Apache.</p>
+
+<h2 id="instalación-php">Instalación PHP</h2>
+
+<p>Para instalar PHP y sus herramientas usaremos: “sudo apt install php libapache2-mod-php php-mysql”</p>
+
+<p>Para comprobar que se ha instalado vamos al entramos al archivo /var/www/html/info.php y con algún editor de texto añadimos las siguientes líneas:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nb">phpinfo</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+<p>Ahora abrimos el navegador y ponemos nuestra dirección IP/info.php, si todo ha salido bien veremos un documento en el que se nos enseñará toda la información php del servidor.</p>
+
+<h2 id="instalación-mysql-server">Instalación MySQL Server</h2>
+
+<p>Introducimos el comando: “sudo apt install mysql-server -y”</p>
+
+<p>Para comprobar que se ha instalado correctamente podemos acceder al servidor MySQL a través del comando: “sudo mysql -u root”</p>
+
+<p>Si todo está bien accederemos sin ningún problema.</p>
+
+<h2 id="instalación-de-la-aplicación-web-propuesta">Instalación de la aplicación web propuesta</h2>
+
+<p>Lo primero que tenemos que hacer es ir a la carpeta en la que vamos a instalar la aplicación con el comando: “cd /var/www/html”</p>
+
+<p>Para futuras reinstalaciones y demás, nos aseguraremos de que el directorio de la aplicación no existe eliminándola en caso de que esté creado con el comando: “sudo rm -rf iaw-practica-lamp”</p>
+
+<p>Ahora descargamos el repositorio de Github: “git clone https://github.com/josejuansanchez/iaw-practica-lamp.git”</p>
+
+<p>Posteriormente movemos el contenido del repositorio a la carpeta de nuestro apache: “mv /var/www/html/iaw-practica-lamp/src/* /var/www/html/”</p>
+
+<p>Después eliminamos el archivo index.html de apache para que al entrar al servidor se nos muestre la aplicación web: “rm -rf /var/www/html/index.html”</p>
+
+<p>Por último en este apartado crearemos el script para la base de datos de la aplicación, y eliminaremos el directorio iaw-practica-lamp ya que ya no lo necesitaremos:</p>
+
+<p>“mysql -u root -p$DB_ROOT_PASSWD &lt; /var/www/html/iaw-practica-lamp/db/database.sql”
+“rm -rf /var/www/html/iaw-practica-lamp/”</p>
+
+<h2 id="instalación-adminer">Instalación Adminer</h2>
+
+<p>Lo primero que debemos hacer es crear el directorio de instalación: “mkdir /var/www/html/adminer”</p>
+
+<p>Nos movemos al directorio y una vez allí descargamos su repositorio de Github con el siguiente comando
+“wget https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7-mysql.php”</p>
+
+<p>Movemos los ficheros php al directorio de apache: “mv adminer-4.7.7-mysql.php index.php”</p>
+
+<p>Lo último que haremos en esta instalación será cambiarle los permisos al directorio ade apache: “chown www-data:www-data * -R”</p>
+
+<h2 id="instalación-goaccess">Instalación GoAccess</h2>
+
+<p>Para esto tenemos que abrir el archivo de repositorios de ubuntu y agregarlo al siguiente repositorio: “deb http://deb.goaccess.io/”</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Tenemos que conseguir la clave de la aplicación, que se hace así: “wget -O - https://deb.goaccess.io/gnugpg.key</td>
+      <td>sudo apt-key add -“</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Por último actualizamos nuestra lista de paquetes e instalamos GoAccess: “apt update -y”
+                                                                         “apt install goaccess -y”</p>
+
+<h2 id="configuración-del-control-de-acceso">Configuración del control de acceso</h2>
+
+<p>Creamos un directorio para instalar en él el stats de apache: “mkdir /var/www/html/stats”</p>
+
+<p>Dejamos que GoAcces se ejecute en segundo plano: “nohup goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html –log-format=COMBINED –real-time-html &amp;”</p>
+
+<p>Creamos un archivo en el que estarán las contraseñas del usuario: “htpasswd -b -c $HTTPASSWD_DIR/.htpasswd $HTTPASSWD_USER $HTTPASSWD_PASSWD”</p>
+
+<p>Sustituimos las cadenas correspondientes de PATH así: “sed -i ‘s#REPLACE_THIS_PATH#$HTTPASSWD_DIR#g’ $HTTPASSWD_DIR/000-default.conf”</p>
+
+<p>Copiamos el archivo de configuración: “cp $HTTPASSWD_DIR/000-default.conf /etc/apache2/sites-available/”</p>
+
+<p>Y para terminar reiniciamosapache: “systemctl restart apache2”</p>
+
+<h2 id="instalación--awstats">Instalación  AWStats</h2>
+
+<p>Ejecutamos el siguiente comando: “apt install awstats -y”</p>
+
+<p>Cambiamos los valores LogFormat y SiteDomain del archivo de configuración: “sed -i ‘s/LogFormat=4/LogFormat=1/g’ /etc/awstats/awstats.conf”
+                                                                           “sed -i ‘s/SiteDomain=”“/SiteDomain=”practicaiaw.com”/g’ /etc/awstats/awstats.conf”</p>
+
+<p>Copiamos el archivo editado al directorio: “/etc/apache2/conf-available/: cp $HTTPASSWD_DIR/awstats.conf /etc/apache2/conf-available/”</p>
+
+<p>Activamos el servicio AWStats con los siguientes comandos: “a2enconf awstats serve-cgi-bin”
+                                                           “a2enmod cgi”</p>
+
+<p>Reiniciamos apache, modificamos los permisos y actualizamos los logs: “systemctl restart apache2”
+                                                                    “sed -i -e “s/www-data/root/g” /etc/cron.d/awstats /usr/share/awstats/tools/update.sh”</p>
+
+  </div><a class="u-url" href="/iaw/2021/03/01/practica-01.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">IAW - JOSE ANTONIO ABAD JURADO</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">IAW - JOSE ANTONIO ABAD JURADO</li><li><a class="u-email" href="mailto:joseean29@iaw.com">joseean29@iaw.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/joseean29"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">joseean29</span></a></li><li><a href="https://www.twitter.com/joseean29"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">joseean29</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

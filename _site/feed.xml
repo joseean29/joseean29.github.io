@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2021-03-01T05:58:48-06:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">IAW - JOSE ANTONIO ABAD JURADO</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Práctica 1</title><link href="http://0.0.0.0:4000/iaw/2021/03/01/practica-01.html" rel="alternate" type="text/html" title="Práctica 1" /><published>2021-03-01T04:54:26-06:00</published><updated>2021-03-01T04:54:26-06:00</updated><id>http://0.0.0.0:4000/iaw/2021/03/01/practica-01</id><content type="html" xml:base="http://0.0.0.0:4000/iaw/2021/03/01/practica-01.html">&lt;h1 id=&quot;práctica-1-iaw&quot;&gt;PRÁCTICA 1 IAW&lt;/h1&gt;
+
+&lt;h1 id=&quot;instalación-de-la-pila-lamp-en-una-máquina-ubuntu-server&quot;&gt;Instalación de la pila LAMP en una máquina Ubuntu Server&lt;/h1&gt;
+
+&lt;h2 id=&quot;configuración-previa&quot;&gt;Configuración previa&lt;/h2&gt;
+&lt;p&gt;Lo primero que debemos hacer es crear una máquina virtual Ubuntu 20.04 en VirtualBox, en mi caso dejé el tamaño de disco duro y de memoria RAM de forma predeterminada, la red en modo adaptador puente y cargamos la iso.&lt;/p&gt;
+
+&lt;p&gt;Configuramos las primeras cosas que van saliendo, idioma, zona horaria, etc… Y una vez instalado el SO al completo lo que hacemos es reiniciar y quitar el disco. Después de esto iniciamos sesión y establecemos una dirección IP estática.&lt;/p&gt;
+
+&lt;p&gt;Instalé SSH para poder conectarme desde mi portátil y tener más facilidad a la hora de copiar y pegar comandos.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación-apache-http-server&quot;&gt;Instalación Apache HTTP Server&lt;/h2&gt;
+&lt;p&gt;Comprobamos que tenemos la lista de repositorios y paquetes actualizado mediante el comando: “sudo apt update”&lt;/p&gt;
+
+&lt;p&gt;En caso de que hubiera nuevos paquetes para instalar, usamos el siguiente comando: “sudo apt upgrade”&lt;/p&gt;
+
+&lt;p&gt;Una vez hayamos actualizado los paquetes instalamos el servidor Apache: “sudo apt install apache2 -y”&lt;/p&gt;
+
+&lt;p&gt;Añadimos “-y” a final de los comandos con el fin de que se omita cualquier interacción con el ususario y la instalación sea directa.&lt;/p&gt;
+
+&lt;p&gt;Para comprobar que se ha instalado correctamente lo que hacemos es poner en el navegador nuestra dirección IP de la máquina servidor y vemos que se nos muestra la página principal de Apache.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación-php&quot;&gt;Instalación PHP&lt;/h2&gt;
+
+&lt;p&gt;Para instalar PHP y sus herramientas usaremos: “sudo apt install php libapache2-mod-php php-mysql”&lt;/p&gt;
+
+&lt;p&gt;Para comprobar que se ha instalado vamos al entramos al archivo /var/www/html/info.php y con algún editor de texto añadimos las siguientes líneas:&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;phpinfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ahora abrimos el navegador y ponemos nuestra dirección IP/info.php, si todo ha salido bien veremos un documento en el que se nos enseñará toda la información php del servidor.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación-mysql-server&quot;&gt;Instalación MySQL Server&lt;/h2&gt;
+
+&lt;p&gt;Introducimos el comando: “sudo apt install mysql-server -y”&lt;/p&gt;
+
+&lt;p&gt;Para comprobar que se ha instalado correctamente podemos acceder al servidor MySQL a través del comando: “sudo mysql -u root”&lt;/p&gt;
+
+&lt;p&gt;Si todo está bien accederemos sin ningún problema.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación-de-la-aplicación-web-propuesta&quot;&gt;Instalación de la aplicación web propuesta&lt;/h2&gt;
+
+&lt;p&gt;Lo primero que tenemos que hacer es ir a la carpeta en la que vamos a instalar la aplicación con el comando: “cd /var/www/html”&lt;/p&gt;
+
+&lt;p&gt;Para futuras reinstalaciones y demás, nos aseguraremos de que el directorio de la aplicación no existe eliminándola en caso de que esté creado con el comando: “sudo rm -rf iaw-practica-lamp”&lt;/p&gt;
+
+&lt;p&gt;Ahora descargamos el repositorio de Github: “git clone https://github.com/josejuansanchez/iaw-practica-lamp.git”&lt;/p&gt;
+
+&lt;p&gt;Posteriormente movemos el contenido del repositorio a la carpeta de nuestro apache: “mv /var/www/html/iaw-practica-lamp/src/* /var/www/html/”&lt;/p&gt;
+
+&lt;p&gt;Después eliminamos el archivo index.html de apache para que al entrar al servidor se nos muestre la aplicación web: “rm -rf /var/www/html/index.html”&lt;/p&gt;
+
+&lt;p&gt;Por último en este apartado crearemos el script para la base de datos de la aplicación, y eliminaremos el directorio iaw-practica-lamp ya que ya no lo necesitaremos:&lt;/p&gt;
+
+&lt;p&gt;“mysql -u root -p$DB_ROOT_PASSWD &amp;lt; /var/www/html/iaw-practica-lamp/db/database.sql”
+“rm -rf /var/www/html/iaw-practica-lamp/”&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación-adminer&quot;&gt;Instalación Adminer&lt;/h2&gt;
+
+&lt;p&gt;Lo primero que debemos hacer es crear el directorio de instalación: “mkdir /var/www/html/adminer”&lt;/p&gt;
+
+&lt;p&gt;Nos movemos al directorio y una vez allí descargamos su repositorio de Github con el siguiente comando
+“wget https://github.com/vrana/adminer/releases/download/v4.7.7/adminer-4.7.7-mysql.php”&lt;/p&gt;
+
+&lt;p&gt;Movemos los ficheros php al directorio de apache: “mv adminer-4.7.7-mysql.php index.php”&lt;/p&gt;
+
+&lt;p&gt;Lo último que haremos en esta instalación será cambiarle los permisos al directorio ade apache: “chown www-data:www-data * -R”&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación-goaccess&quot;&gt;Instalación GoAccess&lt;/h2&gt;
+
+&lt;p&gt;Para esto tenemos que abrir el archivo de repositorios de ubuntu y agregarlo al siguiente repositorio: “deb http://deb.goaccess.io/”&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tenemos que conseguir la clave de la aplicación, que se hace así: “wget -O - https://deb.goaccess.io/gnugpg.key&lt;/td&gt;
+      &lt;td&gt;sudo apt-key add -“&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Por último actualizamos nuestra lista de paquetes e instalamos GoAccess: “apt update -y”
+                                                                         “apt install goaccess -y”&lt;/p&gt;
+
+&lt;h2 id=&quot;configuración-del-control-de-acceso&quot;&gt;Configuración del control de acceso&lt;/h2&gt;
+
+&lt;p&gt;Creamos un directorio para instalar en él el stats de apache: “mkdir /var/www/html/stats”&lt;/p&gt;
+
+&lt;p&gt;Dejamos que GoAcces se ejecute en segundo plano: “nohup goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html –log-format=COMBINED –real-time-html &amp;amp;”&lt;/p&gt;
+
+&lt;p&gt;Creamos un archivo en el que estarán las contraseñas del usuario: “htpasswd -b -c $HTTPASSWD_DIR/.htpasswd $HTTPASSWD_USER $HTTPASSWD_PASSWD”&lt;/p&gt;
+
+&lt;p&gt;Sustituimos las cadenas correspondientes de PATH así: “sed -i ‘s#REPLACE_THIS_PATH#$HTTPASSWD_DIR#g’ $HTTPASSWD_DIR/000-default.conf”&lt;/p&gt;
+
+&lt;p&gt;Copiamos el archivo de configuración: “cp $HTTPASSWD_DIR/000-default.conf /etc/apache2/sites-available/”&lt;/p&gt;
+
+&lt;p&gt;Y para terminar reiniciamosapache: “systemctl restart apache2”&lt;/p&gt;
+
+&lt;h2 id=&quot;instalación--awstats&quot;&gt;Instalación  AWStats&lt;/h2&gt;
+
+&lt;p&gt;Ejecutamos el siguiente comando: “apt install awstats -y”&lt;/p&gt;
+
+&lt;p&gt;Cambiamos los valores LogFormat y SiteDomain del archivo de configuración: “sed -i ‘s/LogFormat=4/LogFormat=1/g’ /etc/awstats/awstats.conf”
+                                                                           “sed -i ‘s/SiteDomain=”“/SiteDomain=”practicaiaw.com”/g’ /etc/awstats/awstats.conf”&lt;/p&gt;
+
+&lt;p&gt;Copiamos el archivo editado al directorio: “/etc/apache2/conf-available/: cp $HTTPASSWD_DIR/awstats.conf /etc/apache2/conf-available/”&lt;/p&gt;
+
+&lt;p&gt;Activamos el servicio AWStats con los siguientes comandos: “a2enconf awstats serve-cgi-bin”
+                                                           “a2enmod cgi”&lt;/p&gt;
+
+&lt;p&gt;Reiniciamos apache, modificamos los permisos y actualizamos los logs: “systemctl restart apache2”
+                                                                    “sed -i -e “s/www-data/root/g” /etc/cron.d/awstats /usr/share/awstats/tools/update.sh”&lt;/p&gt;</content><author><name></name></author><category term="iaw" /><summary type="html">PRÁCTICA 1 IAW</summary></entry><entry><title type="html">Práctica 2</title><link href="http://0.0.0.0:4000/iaw/2021/02/28/practica-02.html" rel="alternate" type="text/html" title="Práctica 2" /><published>2021-02-28T04:54:26-06:00</published><updated>2021-02-28T04:54:26-06:00</updated><id>http://0.0.0.0:4000/iaw/2021/02/28/practica-02</id><content type="html" xml:base="http://0.0.0.0:4000/iaw/2021/02/28/practica-02.html">&lt;h1 id=&quot;práctica-2-iaw&quot;&gt;PRÁCTICA 2 IAW&lt;/h1&gt;
+
+&lt;h1 id=&quot;implantación-de-una-aplicación-web-lamp-en-amazon-web-services-aws&quot;&gt;Implantación de una aplicación web LAMP en Amazon Web Services (AWS)&lt;/h1&gt;
+
+&lt;h2 id=&quot;acceso-a-aws-educate&quot;&gt;Acceso a AWS Educate&lt;/h2&gt;
+&lt;p&gt;Lo primero, pero no menos importante, es que tenemos que tener es una cuenta en AWS Educate para poder realizar esta práctica.&lt;/p&gt;
+
+&lt;p&gt;Iniciamos sesión en la web de AWS Educate y nos vamos a la sección “My Classroms” una vez allí entramos a nuestro curso pinchando en “Go to classrom” y posteriormente damos a continuar.&lt;/p&gt;
+
+&lt;h2 id=&quot;consola-aws&quot;&gt;CONSOLA AWS&lt;/h2&gt;
+&lt;p&gt;Ahora tenemos que entrar dentro de nuestra consola AWS y una vez allí en los servicios de AWS debemos elegir los servicios “EC2”.&lt;/p&gt;
+
+&lt;p&gt;Cuando elegimos este tipo de servicio entramos en la pestaña de la consola de EC2 y una vez allí tenemos que irnos a las instancias y ya crear las que queramos.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-visual-studio-code&quot;&gt;SSH VISUAL STUDIO CODE&lt;/h2&gt;
+
+&lt;p&gt;Antes de explicar el tema de las instancias voy a explicar como conectarnos a ellas desde SSH a través de Visual Studio Code.&lt;/p&gt;
+
+&lt;p&gt;En Visual Studio debemos ir a la sección de instalar extensiones (se puede hacer mediante Ctrl + Mayús + x). 
+En el buscador escribimos ssh y nos instalamos la extensión “Remote - SSH”.&lt;/p&gt;
+
+&lt;p&gt;Por ahora esto lo dejamos aquí, pero volveremos a hablar de Visual Studio más tarde.&lt;/p&gt;
+
+&lt;h2 id=&quot;creación-de-la-instancia&quot;&gt;CREACIÓN DE LA INSTANCIA&lt;/h2&gt;
+
+&lt;p&gt;La máquina que vamos a crear para esta práctica será una Community AMI con la última versión de Ubuntu Server.&lt;/p&gt;
+
+&lt;p&gt;Cuando estemos creando la instancia debemos configurar los puertos que estarán abiertos, nosotros abrimos el de SSH para poder conectarnos desde Visual Studio Code y los puertos de HTTP y HTTPS para poder acceder.&lt;/p&gt;
+
+&lt;p&gt;Creamos una clave nueva para poder conectarnos por SSH a la instancia, descargamos la clave y la guardamos en alguna carpeta en la que tengamos permisos para que luego no nos de problemas. Yo en mi caso tengo Windows y la guardé en la ruta: “C:\Users\Jose Antonio”&lt;/p&gt;
+
+&lt;p&gt;Para terminar estre paso creamos un par de claves (pública y privada) para conectar por SSH con su instancia.&lt;/p&gt;
+
+&lt;h2 id=&quot;lanzar-instandia-desde-visual-studio-code&quot;&gt;LANZAR INSTANDIA DESDE VISUAL STUDIO CODE&lt;/h2&gt;
+
+&lt;p&gt;Volvemos a Visual Studio Code y pinchamos en el icono de la esquina inferior izquierda que es el de SSH, ahí se nos abren unas cuantas opciones y nosotros tenemos que elegir la de “Remote SSH: Open configuration file…” y luego elegir la ruta en la que está el SSH.&lt;/p&gt;
+
+&lt;p&gt;Una vez dentro del apartado de configuración debemos escribir el siguiente contenido:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Host iaw-practica01
+    HostName ec2-54-208-223-218.compute-1.amazonaws.com
+    User ubuntu
+    IdentityFile &quot;C:\Users\Jose Antonio\iaw-amazon.pem&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esto es un ejemplo de lo que habría que poner, quiero dejar claro que el Host es cualquier nombre que le quieras dar a la instancia y que el HostName varía cada vez que inicias la instancia ya que es la dirección DNS pública de la instancia, por otra parte en IdentityFile hay que poner la ruta absoluta en la que se encuentra la clave creada anteriormente.&lt;/p&gt;
+
+&lt;p&gt;Ya creado el archivo de configuración volvemos a pinchar sobre el icono del SSH y esta vez elegimos la opción “Remote SSH: Connect to Host…”, elegimos el nombre del host y le damos a continuar y luego a Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;Después de esto ya estaríamos conectados por SSH así que lo que tenemos que hacer es abrir la carpeta llamada Ubuntu y en ella pegar el script de bash de la práctica 1.&lt;/p&gt;
+
+&lt;p&gt;Para acabar debemos hacer uso del script de bash que diseñamos en la práctica 1 para automatizar la instalación de la aplicación web LAMP.&lt;/p&gt;</content><author><name></name></author><category term="iaw" /><summary type="html">PRÁCTICA 2 IAW</summary></entry></feed>

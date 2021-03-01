@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Práctica 2 | IAW - JOSE ANTONIO ABAD JURADO</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Práctica 2" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="PRÁCTICA 2 IAW" />
+<meta property="og:description" content="PRÁCTICA 2 IAW" />
+<link rel="canonical" href="http://0.0.0.0:4000/iaw/2021/02/28/practica-02.html" />
+<meta property="og:url" content="http://0.0.0.0:4000/iaw/2021/02/28/practica-02.html" />
+<meta property="og:site_name" content="IAW - JOSE ANTONIO ABAD JURADO" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-28T04:54:26-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Práctica 2" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","description":"PRÁCTICA 2 IAW","headline":"Práctica 2","dateModified":"2021-02-28T04:54:26-06:00","datePublished":"2021-02-28T04:54:26-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/iaw/2021/02/28/practica-02.html"},"url":"http://0.0.0.0:4000/iaw/2021/02/28/practica-02.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="IAW - JOSE ANTONIO ABAD JURADO" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">IAW - JOSE ANTONIO ABAD JURADO</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Práctica 2</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-02-28T04:54:26-06:00" itemprop="datePublished">Feb 28, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="práctica-2-iaw">PRÁCTICA 2 IAW</h1>
+
+<h1 id="implantación-de-una-aplicación-web-lamp-en-amazon-web-services-aws">Implantación de una aplicación web LAMP en Amazon Web Services (AWS)</h1>
+
+<h2 id="acceso-a-aws-educate">Acceso a AWS Educate</h2>
+<p>Lo primero, pero no menos importante, es que tenemos que tener es una cuenta en AWS Educate para poder realizar esta práctica.</p>
+
+<p>Iniciamos sesión en la web de AWS Educate y nos vamos a la sección “My Classroms” una vez allí entramos a nuestro curso pinchando en “Go to classrom” y posteriormente damos a continuar.</p>
+
+<h2 id="consola-aws">CONSOLA AWS</h2>
+<p>Ahora tenemos que entrar dentro de nuestra consola AWS y una vez allí en los servicios de AWS debemos elegir los servicios “EC2”.</p>
+
+<p>Cuando elegimos este tipo de servicio entramos en la pestaña de la consola de EC2 y una vez allí tenemos que irnos a las instancias y ya crear las que queramos.</p>
+
+<h2 id="ssh-visual-studio-code">SSH VISUAL STUDIO CODE</h2>
+
+<p>Antes de explicar el tema de las instancias voy a explicar como conectarnos a ellas desde SSH a través de Visual Studio Code.</p>
+
+<p>En Visual Studio debemos ir a la sección de instalar extensiones (se puede hacer mediante Ctrl + Mayús + x). 
+En el buscador escribimos ssh y nos instalamos la extensión “Remote - SSH”.</p>
+
+<p>Por ahora esto lo dejamos aquí, pero volveremos a hablar de Visual Studio más tarde.</p>
+
+<h2 id="creación-de-la-instancia">CREACIÓN DE LA INSTANCIA</h2>
+
+<p>La máquina que vamos a crear para esta práctica será una Community AMI con la última versión de Ubuntu Server.</p>
+
+<p>Cuando estemos creando la instancia debemos configurar los puertos que estarán abiertos, nosotros abrimos el de SSH para poder conectarnos desde Visual Studio Code y los puertos de HTTP y HTTPS para poder acceder.</p>
+
+<p>Creamos una clave nueva para poder conectarnos por SSH a la instancia, descargamos la clave y la guardamos en alguna carpeta en la que tengamos permisos para que luego no nos de problemas. Yo en mi caso tengo Windows y la guardé en la ruta: “C:\Users\Jose Antonio”</p>
+
+<p>Para terminar estre paso creamos un par de claves (pública y privada) para conectar por SSH con su instancia.</p>
+
+<h2 id="lanzar-instandia-desde-visual-studio-code">LANZAR INSTANDIA DESDE VISUAL STUDIO CODE</h2>
+
+<p>Volvemos a Visual Studio Code y pinchamos en el icono de la esquina inferior izquierda que es el de SSH, ahí se nos abren unas cuantas opciones y nosotros tenemos que elegir la de “Remote SSH: Open configuration file…” y luego elegir la ruta en la que está el SSH.</p>
+
+<p>Una vez dentro del apartado de configuración debemos escribir el siguiente contenido:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host iaw-practica01
+    HostName ec2-54-208-223-218.compute-1.amazonaws.com
+    User ubuntu
+    IdentityFile "C:\Users\Jose Antonio\iaw-amazon.pem"
+</code></pre></div></div>
+
+<p>Esto es un ejemplo de lo que habría que poner, quiero dejar claro que el Host es cualquier nombre que le quieras dar a la instancia y que el HostName varía cada vez que inicias la instancia ya que es la dirección DNS pública de la instancia, por otra parte en IdentityFile hay que poner la ruta absoluta en la que se encuentra la clave creada anteriormente.</p>
+
+<p>Ya creado el archivo de configuración volvemos a pinchar sobre el icono del SSH y esta vez elegimos la opción “Remote SSH: Connect to Host…”, elegimos el nombre del host y le damos a continuar y luego a Ubuntu.</p>
+
+<p>Después de esto ya estaríamos conectados por SSH así que lo que tenemos que hacer es abrir la carpeta llamada Ubuntu y en ella pegar el script de bash de la práctica 1.</p>
+
+<p>Para acabar debemos hacer uso del script de bash que diseñamos en la práctica 1 para automatizar la instalación de la aplicación web LAMP.</p>
+
+
+  </div><a class="u-url" href="/iaw/2021/02/28/practica-02.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">IAW - JOSE ANTONIO ABAD JURADO</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">IAW - JOSE ANTONIO ABAD JURADO</li><li><a class="u-email" href="mailto:joseean29@iaw.com">joseean29@iaw.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/joseean29"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">joseean29</span></a></li><li><a href="https://www.twitter.com/joseean29"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">joseean29</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
